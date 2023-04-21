@@ -15,8 +15,47 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include,re_path
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+from django.contrib.sitemaps.views import sitemap
+from website.sitemaps import StaticViewSitemap
+from website.views import *
+from blog.sitemaps import *
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'blog' : BlogSitemap,
+}
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('website.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('blog/', include('blog.urls')),
+    
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
+    re_path(r'^robots\.txt', include('robots.urls')),
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')), # The CKEditor path
+    #path('captcha/', include('captcha.urls')),
 ]
+
+# admin interface Header
+admin.site.site_header = 'Mikey'
+admin.site.index_title = 'Admin Panel'
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#MAINTENANCE_MODE
+from django.urls import re_path
+from django.conf import settings
+from django.views.generic.base import TemplateView
+
+if settings.MAINTENANCE_MODE:
+   urlpatterns.insert(0, re_path(r'^', TemplateView.as_view(template_name='C:/Users/acer/Documents/GitHub/My-First-Site/templates/maintenance.html'), name='maintenance'))
