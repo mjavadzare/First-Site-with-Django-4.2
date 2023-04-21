@@ -66,6 +66,10 @@ INSTALLED_APPS = [
     
 ]
 
+#allauth configuration
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'  # redirect (important)
+
 # captcha admin settings
 # MULTI_CAPTCHA_ADMIN = {
 #     'engine': 'simple-captcha',

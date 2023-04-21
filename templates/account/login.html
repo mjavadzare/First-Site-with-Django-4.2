@@ -34,7 +34,7 @@
                             {%else%}
                             {% endif %}
                         -->
-                        <form action="{% url 'account:login' %}" method="post" class="signin-form">
+                        <form action="{% url 'account_login' %}" method="post" class="signin-form">
 
                             {% csrf_token %}
 
@@ -59,8 +59,8 @@
                                     </label>
                                 </div>
                                 <div class="w-50 text-md-right">
-                                    <a href="{% url 'account:forget-password' %}" style=" color: #fff">Forgot Password</a><br>
-                                    <a href="{% url 'account:signup' %}" style="color: #fff">Create new account</a>
+                                    <a href="{% url 'account_reset_password' %}" style=" color: #fff">Forgot Password</a><br>
+                                    <a href="{% url 'account_signup' %}" style="color: #fff">Create new account</a>
                                 </div>
 
                             </div>
