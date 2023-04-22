@@ -66,10 +66,10 @@
                   <ul style="border: 2cm; align-items: center; align-content: center; text-align: left;">
                     {% if request.user.is_authenticated %}
                       <li class="nav-item"><a href="#">{{request.user.username}}</a></li>
-                      <li class="nav-item"><a href="{% url 'account_logout' %}">Logout</a></li>
+                      <li class="nav-item"><a href="{% url 'account:logout' %}">Logout</a></li>
                     {% else%}
-                      <li class="nav-item"><a href="{% url 'account_login' %}">Login</a></li>
-                      <li class="nav-item"><a href="{% url 'account_signup' %}">Sign up</a></li>
+                      <li class="nav-item"><a href="{% url 'account:login' %}">Login</a></li>
+                      <li class="nav-item"><a href="{% url 'account:signup' %}">Sign up</a></li>
                     {% endif %}
                   </ul>			
                 

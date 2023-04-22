@@ -1,0 +1,9 @@
+
+<aside class="single_sidebar_widget tag_cloud_widget">
+    <h4 class="widget_title">Tag Clouds</h4>
+    <ul class="list">
+        {% for tag in post.tags.all %}
+        <li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></li>
+        {% endfor %}
+    </ul>
+</aside>

@@ -1,0 +1,21 @@
+{% load blog_tags %}
+{% load thumbnail %}
+
+<aside class="single_sidebar_widget latest_posts_widget">
+    <h3 class="widget_title">Recent Posts</h3>
+    {% for post in pop_posts %}
+    <div class="media post_item">
+        {% thumbnail post.image "100x90" crop="center" as im %}
+                <img class="img-fluid" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="">
+                {% empty %}
+                <p>No image</p>
+                {% endthumbnail %}
+        <div class="media-body">
+            <a href="{% url 'blog:single' pid=post.id %}">
+                <h3>{{post.title}}</h3>
+            </a>
+            <p>{{post.published_date|timesince|upto:', '}} ago</p>
+        </div>
+    </div>
+    {% endfor %}
+</aside>
