@@ -27,6 +27,15 @@ readers do not read off random characters that represent icons */
 .fa-behance:before {
   content: "\f1b4"; }
 
+.fa-telegram:before {
+  content: "\f2c6"; }
+
+.fa-instagram:before {
+  content: "\f16d"; }
+
+.fa-eye:before {
+  content: "\f06e"; }
+  
 .fa-comment:before {
   content: "\f075"; }
 

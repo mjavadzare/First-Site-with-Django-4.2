@@ -35,6 +35,9 @@ class Post(models.Model):
     category = models.ManyToManyField(Category)
     tags = TaggableManager()
     counted_views = models.PositiveIntegerField(default=0)
+
+    counted_likes = models.PositiveIntegerField(default=0)
+
     publish_status = models.BooleanField(default=False, )
     published_date = models.DateTimeField(null=True)
     login_require = models.BooleanField(default=False)

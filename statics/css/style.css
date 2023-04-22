@@ -120,6 +120,10 @@ a:hover {
   transition: 0.5s;
 }
 
+a:active {
+  color:#FF1488 ;
+}
+
 /* line 74, E:/170 Kanox Agency/170_Kanox_Agency_html/sass/_common.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #112e41;

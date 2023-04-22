@@ -95,6 +95,6 @@ def blog_search(request):
     posts =Post.objects.filter(published_date__lte=timezone.now())
     if request.method == 'GET':
         if s := request.GET.get('s'):
-            posts = posts.filter(summary__contains=s)
+            posts = posts.filter(summary__contains=s) | posts.filter(title__contains=s)
     context = {'posts':posts}
     return render(request, 'blog/blog-home.html', context)

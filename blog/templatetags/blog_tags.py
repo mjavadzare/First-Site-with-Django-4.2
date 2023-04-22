@@ -18,13 +18,13 @@ def upto(value, delimiter=None):
     return value.split(delimiter)[0]
 upto.is_safe = True
 
-@register.inclusion_tag('blog/right-side/blog-latest-posts.html', name='latest_posts')
+@register.inclusion_tag('blog/widgets/latest_posts_widget.html', name='latest_posts')
 def latest_posts(arg=5):
     posts = Post.objects.filter(publish_status= True).order_by('-published_date')[:arg]
     return {'pop_posts': posts}
 
 
-@register.inclusion_tag('blog/right-side/blog-category.html', name='category')
+@register.inclusion_tag('blog/widgets/post_category_widget.html', name='category')
 def category_list():
     posts = Post.objects.filter(publish_status= True)
     cat_dict = {}

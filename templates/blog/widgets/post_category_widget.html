@@ -5,8 +5,7 @@
         {% for name,count in categories.items %}
         <li>
             <a href="{% url 'blog:category' cat_name=name %}" class="d-flex">
-                <p>{{name}}</p>
-                <p>{{count}}</p>
+                <p>{{name}} ({{count}})</p>
             </a>
         </li>
         {% endfor %}

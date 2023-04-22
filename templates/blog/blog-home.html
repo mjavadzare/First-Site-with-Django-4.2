@@ -31,7 +31,7 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             {% thumbnail post.image "750x375" crop="center" as im %}
-                            <img class="card-img rounded-0" src="{{im.url}}" max-width="{{im.width}}"
+                            <img class="card-img" src="{{im.url}}" max-width="{{im.width}}"
                                 max-height="{{im.height}}" alt="">
                             {% endthumbnail %}
                             <a href="#" class="blog_item_date">
@@ -126,8 +126,8 @@
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     {% include 'blog/widgets/search_widget.html' %}
-                    {% include 'blog/widgets/post_category_widget.html' %}
-                    {% include 'blog/widgets/latest_posts_widget.html' %}
+                    {% category %}
+                    {% latest_posts %}
                     {% include 'blog/widgets/newsletter_widget.html' %}
                     
                 </div>
@@ -135,6 +135,7 @@
         </div>
     </div>
 </section>
+{% endfor %}
 
 {% block footer %}
 {% endblock %}

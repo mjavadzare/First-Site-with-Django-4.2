@@ -30,27 +30,27 @@
                         <img class="img-fluid" src="{% static 'img/blog/single_blog_1.png' %}" alt="">
                     </div>
                     <div class="blog_details">
-                        <h2>Second divided from form fish beast made every of seas
-                            all gathered us saying he our
-                        </h2>
+                        <h2>{{post.title}}</h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
-                            <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                            <li><a href="{% url 'blog:author' author_username=post.author.username %}"><i
+                                        class="far fa-user"></i> {{post.author.get_full_name}}</a></li>
+
+                            <li><a href="#"><i class="far fa-comments"></i> {% total_comments pid=post.id %}
+                                    Comments</a></li>
+                            <li><a href="#"><i class="far fa-eye"></i> {{post.counted_views|intcomma}} Views</a></li>
+                            <li><a href="#"><i class="far fa-heart"></i> {{post.counted_likes|intcomma}} Likes</a></li>
+
+                        </ul>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            {% for cat in post.category.all %}
+                            <li><a href="{% url 'blog:category' cat_name=cat.name %}">{{cat.name}}</a></li>
+                            {% endfor %}
                         </ul>
                         <p class="excert">
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why
-                            you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a
-                            fraction of the camp price. However, who has the willpower
+                            {{post.summary|safe}}
                         </p>
                         <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why
-                            you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a
-                            fraction of the camp price. However, who has the willpower to actually sit through a
-                            self-imposed MCSE training. who has the willpower to actually
+                            {{post.content|safe}}
                         </p>
                         <div class="quote-wrapper">
                             <div class="quotes">
@@ -63,25 +63,29 @@
                             </div>
                         </div>
                         <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why
-                            you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a
-                            fraction of the camp price. However, who has the willpower
+                        <p class="excert">
+
+                            {% if post.audio %}
+                            <audio controls>
+                                <source src="{{post.audio.url}}" type="audio/mpeg">
+                            </audio>
+                            {% endif %}
+                        </p>
                         </p>
                         <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why
-                            you
-                            should have to spend money on boot camp when you can get the MCSE study materials yourself
-                            at a
-                            fraction of the camp price. However, who has the willpower to actually sit through a
-                            self-imposed MCSE training. who has the willpower to actually
+                            {% if post.video %}
+                            <video width="320" height="240" controls>
+                                <source src="{{post.video.url}}" type="video/mp4">
+                            </video>
+                            {% endif %}
                         </p>
                     </div>
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4
+
+                        <p class="like-info"> <button><i class="far fa-heart"></i><span
+                                    class="align-middle"></span></button> Lily and 4
                             people like this</p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">
 
@@ -89,8 +93,8 @@
                         <ul class="social-icons">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                            <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                     <div class="navigation-area">
@@ -269,13 +273,13 @@
             </div>
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
-                    
+
                     {% include 'blog/widgets/search_widget.html' %}
-                    {% include 'blog/widgets/post_category_widget.html' %}
-                    {% include 'blog/widgets/latest_posts_widget.html' %}
+                    {% category %}
+                    {% latest_posts %}
                     {% include 'blog/widgets/tag_cloud_widget.html' %}
                     {% include 'blog/widgets/newsletter_widget.html' %}
-                    
+
 
                 </div>
             </div>

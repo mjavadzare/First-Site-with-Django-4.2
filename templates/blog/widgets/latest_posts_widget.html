@@ -5,14 +5,14 @@
     <h3 class="widget_title">Recent Posts</h3>
     {% for post in pop_posts %}
     <div class="media post_item">
-        {% thumbnail post.image "100x90" crop="center" as im %}
-                <img class="img-fluid" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="">
+        {% thumbnail post.image "100x75" crop="center" as im %}
+                <img class="img-fluid" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" style="margin-right: 0%;">
                 {% empty %}
                 <p>No image</p>
                 {% endthumbnail %}
         <div class="media-body">
             <a href="{% url 'blog:single' pid=post.id %}">
-                <h3>{{post.title}}</h3>
+                <h3 style="margin: auto; font-size:150%;">{{post.title}}</h3>
             </a>
             <p>{{post.published_date|timesince|upto:', '}} ago</p>
         </div>
