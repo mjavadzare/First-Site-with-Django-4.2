@@ -35,9 +35,9 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
-    path('accounts/', include('allauth.urls')),
     path('blog/', include('blog.urls')),
-    
+    path('', include('account.urls')),
+
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
     re_path(r'^robots\.txt', include('robots.urls')),
@@ -58,4 +58,4 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 
 if settings.MAINTENANCE_MODE:
-   urlpatterns.insert(0, re_path(r'^', TemplateView.as_view(template_name='C:/Users/acer/Documents/GitHub/My-First-Site/templates/maintenance.html'), name='maintenance'))
+   urlpatterns.insert(0, re_path(r'^', TemplateView.as_view(template_name='maintenance.html'), name='maintenance'))

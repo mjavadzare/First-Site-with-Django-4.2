@@ -1,12 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Under Maintenance</title>
+	<!-- CSS Styles -->
+	<link rel="stylesheet" type="text/css" href="{% static 'maintenance/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'maintenance/css/flipclock.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'maintenance/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'maintenance/css/style.css' %}">
 </head>
 <body>
-    as of now, this site is under maintenance.
-</body>
+	<div class="bg-img1 size1 overlay1 p-b-35 p-l-15 p-r-15" style="background-image: url('static/maintenance/pics/bg01.jpg');">
+		<div class="flex-col-c p-t-160 p-b-20 respon1">
+			<div class="wrappic1">
+				<a href="#">
+					<img src="{% static 'maintenance/pics/icons/logo.png' %}" alt="IMG">
+				</a>
+			</div>
+			<h3 class="l1-txt1 txt-center p-t-30 p-b-100" >
+				بزودی بر می گردیم
+			</h3>
+			<div class="cd100"></div>
+		</div>
+
+		<!-- Social Links -->
+		<div class="flex-w flex-c-m p-b-35">
+			<a href="https://t.me/www_Mohammad" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-telegram"></i>
+			</a>
+			<a href="https://github.com/mjz589" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-github"></i>
+			</a>
+			<a href="https://www.instagram.com/mmd.javad__/" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-instagram"></i>
+			</a>
+			<!-- <a href="#" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-facebook"></i>
+			</a>
+			<a href="#" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-twitter"></i>
+			</a>
+			<a href="#" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-youtube-play"></i>
+			</a> -->
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="{% static 'maintenance/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'maintenance/js/flipclock.min.js' %}"></script>
+	<script src="{% static 'maintenance/js/moment.min.js' %}"></script>
+	<script src="{% static 'maintenance/js/moment-timezone.min.js' %}"></script>
+	<script src="{% static 'maintenance/js/moment-timezone-with-data.min.js' %}"></script>
+	<script src="{% static 'maintenance/js/countdowntime.js' %}"></script>
+	<script>
+		$('.cd100').countdown100({
+			/*Set Endtime here*/
+			/*Endtime must be > current time*/
+			endtimeYear: 2023,
+			endtimeMonth: 4,
+			endtimeDate: 22,
+			endtimeHours: 15,
+			endtimeMinutes: 43,
+			endtimeSeconds: 30,
+			timeZone: console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+			// ex:  timeZone: "America/New_York" Asia/Tehran|Iran
+			//go to " http://momentjs.com/timezone/ " to get timezone
+		});
+	</script>
+</body> <!-- This template has been downloaded from Webrubik.com -->
 </html>

@@ -26,7 +26,7 @@
 					<div class="login-wrap p-0">
 		      	<h3 class="mb-4 text-center">Create new account</h3>
                 <h6> {% include 'messages.html' %}</h4>
-		      	<form action="{% url 'account_signup' %}" method="post" class="signin-form">
+		      	<form action="{% url 'account:signup' %}" method="post" class="signin-form">
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
@@ -60,11 +60,12 @@
 									</label>
 								</div>
 								<div class="w-50 text-md-right">
-									<a href="{% url 'account_login' %}" style="color: #fff">Have an account?</a>
+									<a href="{% url 'account:login' %}" style="color: #fff">Have an account?</a>
 								</div>
 	            </div>
                 
 	          </form>
+			  
 	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
 	          <div class="social d-flex text-center">
 	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
