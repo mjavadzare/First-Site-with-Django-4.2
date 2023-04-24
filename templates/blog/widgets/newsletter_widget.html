@@ -3,10 +3,11 @@
     <form action="{% url 'website:newsletter' %}" method="post">
         <div class="form-group">
             {% csrf_token %}
-            <input type="email" class="form-control" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-                onfocus="this.placeholder = ''" onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required="">
+            <input name="email" placeholder="Enter email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                class="common-input mb-20 form-control" required="" type="email">
         </div>
         <button class="button rounded-0 primary-bg text-white w-100 btn_4" type="submit">Subscribe</button>
     </form>
+    {% include 'messages.html' %}
 </aside>

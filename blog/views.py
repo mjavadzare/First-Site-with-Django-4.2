@@ -45,6 +45,7 @@ def blog_view(request, **kwargs):
 
 def blog_single_view(request,pid):
     post = get_object_or_404(Post, pk=pid , published_date__lte=timezone.now())
+
     post.counted_views +=1  # count views
     post.save()
 
@@ -55,17 +56,21 @@ def blog_single_view(request,pid):
                                          published_date__lt=post.published_date,
                                             ).order_by('published_date').last()
     
-    # Comment Area
+    # Comment and like Area
     comments = Comment.objects.filter(post=post.id,approved=True)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            # new_comment = form.save(commit=False)
-            # new_comment.name = 'Unknown'     # warning simple-captcha is enabled.
-            form.save()
-            messages.add_message(request, messages.SUCCESS, 'Your comment submited successfully.')
-        else:
-            messages.add_message(request, messages.ERROR, "Your comment didn't submit, make sure you have a comment ticket and try again.")
+        if request.POST['form_id'] == 'like':
+            post.counted_likes +=1 # count likes
+            post.save()
+        elif request.POST['form_id'] == 'comment':
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                # new_comment = form.save(commit=False)
+                # new_comment.name = 'Unknown'     # warning simple-captcha is enabled.
+                form.save()
+                messages.add_message(request, messages.SUCCESS, 'Your comment submited successfully.')
+            else:
+                messages.add_message(request, messages.ERROR, "Your comment didn't submit, make sure you have a comment ticket and try again.")
 
     if not post.login_require :
         form = CommentForm()
@@ -89,14 +94,6 @@ def blog_single_view(request,pid):
         else:
             return render(request, 'account/login.html', )
             
-def like_counter(request, pid):
-    print("shod???")
-    post = get_object_or_404(Post, pk=pid , published_date__lte=timezone.now())
-    post.counted_likes +=1 
-    print("shod???")
-    post.save()
-    #return redirect(request , blog_single_view)
-    return redirect('admin/')
 
 def blog_search(request):
     posts =Post.objects.filter(published_date__lte=timezone.now())
