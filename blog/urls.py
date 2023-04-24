@@ -11,6 +11,7 @@ urlpatterns = [
     path('category/<str:cat_name>' , blog_view, name='category'),
     path('tag/<str:tag_name>' , blog_view, name='tag'),
     path('author/<str:author_username>' , blog_view, name='author'),
+    path('<int:pid>', like_counter, name='like_counter'),
     path('search/', blog_search, name='search'),
     path('rss/feed/', LatestEntriesFeed()),
 ]

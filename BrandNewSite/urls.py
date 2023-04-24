@@ -42,7 +42,7 @@ urlpatterns = [
          name='django.contrib.sitemaps.views.sitemap'),
     re_path(r'^robots\.txt', include('robots.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')), # The CKEditor path
-    #path('captcha/', include('captcha.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 # admin interface Header

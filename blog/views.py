@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404 , HttpResponseRedirect
+from django.shortcuts import render,get_object_or_404 , HttpResponseRedirect, redirect
 
 from django.utils import timezone
 from .models import *
@@ -89,7 +89,14 @@ def blog_single_view(request,pid):
         else:
             return render(request, 'account/login.html', )
             
-
+def like_counter(request, pid):
+    print("shod???")
+    post = get_object_or_404(Post, pk=pid , published_date__lte=timezone.now())
+    post.counted_likes +=1 
+    print("shod???")
+    post.save()
+    #return redirect(request , blog_single_view)
+    return redirect('admin/')
 
 def blog_search(request):
     posts =Post.objects.filter(published_date__lte=timezone.now())
@@ -98,3 +105,4 @@ def blog_search(request):
             posts = posts.filter(summary__contains=s) | posts.filter(title__contains=s)
     context = {'posts':posts}
     return render(request, 'blog/blog-home.html', context)
+

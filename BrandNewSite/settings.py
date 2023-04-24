@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'robots',
     'ckeditor', # CKEditor config
     'ckeditor_uploader', # CKEditor media uploader
-    #'captcha',
+    'captcha',
     'compressor',
     
 ]
