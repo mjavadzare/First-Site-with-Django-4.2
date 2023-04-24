@@ -88,22 +88,17 @@
                         <form method="post" action="{% url 'blog:single' pid=post.id %}">
                             {% csrf_token %}
                             <input type="hidden" name="form_id" value="like">
-                            <button type="submit"><i class="far fa-heart"></i>&nbsp Like</button>
+                            <button type="submit">Like ❤️</button>
                         </form>
-                        <!-- <a href="{% url 'blog:single' pid=post.id %}" />
-                        <button type="submit"><i class="far fa-heart"></i></button>
-                        </a> -->
-                        <!-- <p class="like-info"> <button><i class="far fa-heart"></i><span
-                                    class="align-middle"></span></button> Lily and 4
-                            people like this</p> -->
+                        
                         <div class="col-sm-4 text-center my-2 my-sm-0">
 
                         </div>
                         <ul class="social-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-telegram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <!-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li> -->
+                            <li><a href="https://github.com/mjz589"><i class="fab fa-github"></i></a></li>
+                            <li><a href="https://t.me/www_Mohammad"><i class="fab fa-telegram"></i></a></li>
+                            <li><a href="https://www.instagram.com/mmd.javad__/"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
 

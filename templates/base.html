@@ -36,8 +36,9 @@
       <div class="row align-items-center">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg navbar-light">
-            
-            <a class="navbar-brand" href="#" style="text-align: center;"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
+
+            <a class="navbar-brand" href="#" style="text-align: center;"> <img src="{% static 'img/logo.png' %}"
+                alt="logo"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -65,14 +66,14 @@
                 <li class="nav-item">
                   <ul style="border: 2cm; align-items: center; align-content: center; text-align: left;">
                     {% if request.user.is_authenticated %}
-                      <li class="nav-item"><a href="#">{{request.user.username}}</a></li>
-                      <li class="nav-item"><a href="{% url 'account:logout' %}">Logout</a></li>
+                    <li class="nav-item"><a href="#">{{request.user.username}}</a></li>
+                    <li class="nav-item"><a href="{% url 'account:logout' %}">Logout</a></li>
                     {% else%}
-                      <li class="nav-item"><a href="{% url 'account:login' %}">Login</a></li>
-                      <li class="nav-item"><a href="{% url 'account:signup' %}">Sign up</a></li>
+                    <li class="nav-item"><a href="{% url 'account:login' %}">Login</a></li>
+                    <li class="nav-item"><a href="{% url 'account:signup' %}">Sign up</a></li>
                     {% endif %}
-                  </ul>			
-                
+                  </ul>
+
                 </li>
               </ul>
             </div>
@@ -110,54 +111,56 @@
             <form action="#">
               <div class="form-group">
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder='Enter email address'
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                  <div class="input-group-append">
-                    <button class="btn" type="button"><i class="ti-angle-right"></i></button>
-                  </div>
+                  {% csrf_token %}
+                  <input name="email" placeholder="Enter email"
+                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Enter email'" class="common-input mb-20 form-control" required=""
+                    type="email">
+                  <button class="btn" type="submit"><i class="ti-angle-right"></i></button>
                 </div>
               </div>
-            </form>
-            <div class="social_icon">
-              <a href="#"> <i class="ti-facebook"></i> </a>
-              <a href="#"> <i class="ti-twitter-alt"></i> </a>
-              <a href="#"> <i class="ti-instagram"></i> </a>
-              <a href="#"> <i class="ti-skype"></i> </a>
-            </div>
+          </div>
+          </form>
+          <div class="social_icon">
+            <a href="#"> <i class="ti-facebook"></i> </a>
+            <a href="#"> <i class="ti-twitter-alt"></i> </a>
+            <a href="#"> <i class="ti-instagram"></i> </a>
+            <a href="#"> <i class="ti-skype"></i> </a>
           </div>
         </div>
-        <div class="col-sm-12 col-md-8 col-xl-3">
-          <div class="single-footer-widget footer_3">
-            <h4>Instagram</h4>
-            <div class="footer_img">
-              <div class="single_footer_img">
-                <img src="{% static 'img/footer_img/footer_img_1.png' %}" alt="">
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
-              <div class="single_footer_img">
-                <img src="{% static 'img/footer_img/footer_img_2.png' %}" alt="">
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
-              <div class="single_footer_img">
-                <img src="{% static 'img/footer_img/footer_img_3.png' %}" alt="">
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
-              <div class="single_footer_img">
-                <img src="{% static 'img/footer_img/footer_img_4.png' %}" alt="">
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
-              <div class="single_footer_img">
-                <img src="{% static 'img/footer_img/footer_img_5.png' %}" alt="">
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
-              <div class="single_footer_img">
-                <img src="{% static 'img/footer_img/footer_img_6.png' %}" alt="">
-                <a href="#"><i class="ti-instagram"></i></a>
-              </div>
+      </div>
+      <div class="col-sm-12 col-md-8 col-xl-3">
+        <div class="single-footer-widget footer_3">
+          <h4>Instagram</h4>
+          <div class="footer_img">
+            <div class="single_footer_img">
+              <img src="{% static 'img/footer_img/footer_img_1.png' %}" alt="">
+              <a href="#"><i class="ti-instagram"></i></a>
+            </div>
+            <div class="single_footer_img">
+              <img src="{% static 'img/footer_img/footer_img_2.png' %}" alt="">
+              <a href="#"><i class="ti-instagram"></i></a>
+            </div>
+            <div class="single_footer_img">
+              <img src="{% static 'img/footer_img/footer_img_3.png' %}" alt="">
+              <a href="#"><i class="ti-instagram"></i></a>
+            </div>
+            <div class="single_footer_img">
+              <img src="{% static 'img/footer_img/footer_img_4.png' %}" alt="">
+              <a href="#"><i class="ti-instagram"></i></a>
+            </div>
+            <div class="single_footer_img">
+              <img src="{% static 'img/footer_img/footer_img_5.png' %}" alt="">
+              <a href="#"><i class="ti-instagram"></i></a>
+            </div>
+            <div class="single_footer_img">
+              <img src="{% static 'img/footer_img/footer_img_6.png' %}" alt="">
+              <a href="#"><i class="ti-instagram"></i></a>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
     <div class="container-fluid">
       <div class="row">
@@ -167,9 +170,9 @@
               <div class="col-lg-12">
                 <p class="footer-text m-0">
                   Copyright &copy;
-                  <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-                  with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                    target="_blank">Colorlib</a>
+                  <script>document.write(new Date().getFullYear());</script> All rights reserved | This web is developed
+                  by Mohamad Javad Zare
+                  🖥️ , template used from <a href="https://colorlib.com" target="_blank">Colorlib</a>
                 </p>
               </div>
             </div>
@@ -199,9 +202,9 @@
   <script src="{% static 'js/owl.carousel2.thumbs.min.js' %}"></script>
 
 
-{% block footer %}
-<!-- additional scripts -->
-{% endblock %}
+  {% block footer %}
+  <!-- additional scripts -->
+  {% endblock %}
 
   <script src="{% static 'js/slick.min.js' %}"></script>
 

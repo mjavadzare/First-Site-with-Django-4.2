@@ -30,6 +30,12 @@ readers do not read off random characters that represent icons */
 .fa-telegram:before {
   content: "\f2c6"; }
 
+.fa-github:before {
+  content: "\f09b"; }
+
+.fa-RedHeart:before {
+  content: "\FE0F"; }
+
 .fa-instagram:before {
   content: "\f16d"; }
 
