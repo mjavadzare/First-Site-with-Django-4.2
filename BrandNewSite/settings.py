@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
     'account.apps.AccountConfig',
-    
+    'projects.apps.ProjectsConfig',
+
     'sorl.thumbnail',
     'django.contrib.humanize',
     'django_extensions',
