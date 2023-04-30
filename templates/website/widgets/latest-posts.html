@@ -1,0 +1,36 @@
+{% load blog_tags %}
+{% load thumbnail %}
+{% for post in latest_posts %}
+{% load humanize %}
+
+<div class="col-sm-6 col-lg-4 col-xl-4">
+    <div class="single-home-blog">
+      <div class="card">
+        {% thumbnail post.image "360x260" crop="center" as im %}
+        <img class="img-fluid" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
+                    alt="">
+                {% empty %}
+                <p>No image</p>
+                {% endthumbnail %}
+        <div class="card-body">
+          <a href="{% url 'blog:single' pid=post.id %}">Technology</a> | <span> {{post.published_date|timesince|upto:', '}} ago</span>
+          <div class="tags">
+            <!-- <ul>
+                {% for cat , count in categories %}
+                <li>
+                    <a href="{% url 'blog:category' cat_name=cat %}">{{cat}}</a>
+                </li>
+                {% endfor %}
+            </ul> -->
+        </div>
+            <h5 class="card-title">{{post.title}}</h5>
+          </a>
+          <ul>
+            <li> <i class="ti-comments"></i>{% total_comments pid=post.id %} Comments</li>
+            <li> <i class="ti-eye"></i>{{post.counted_views|intcomma}} Views</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}

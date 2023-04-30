@@ -11,7 +11,7 @@ def upto(value, delimiter=None):
 upto.is_safe = True
 
 @register.inclusion_tag('website/widgets/latest-posts.html', name='latest_posts')
-def latest_posts(arg=6):
+def latest_posts(arg=3):
     posts = Post.objects.filter(publish_status= True).order_by('-published_date')[:arg]
     cat_dict = {}
     categories = Category.objects.all()
