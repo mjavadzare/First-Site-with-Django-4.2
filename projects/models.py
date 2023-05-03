@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField 
 from django.core.exceptions import ValidationError
+from  datetime import date
+
 # Create your models here.
 
 class Project(models.Model):
@@ -11,13 +13,14 @@ class Project(models.Model):
         megabyte_limit = 2.0
         if filesize > megabyte_limit*1024*1024:
             raise ValidationError("Max image size is %sMB" % str(megabyte_limit))
-    image = models.ImageField(upload_to='blog/', default='blog/default.jpg', validators=[validate_image])
+    image = models.ImageField(upload_to='projects/', default='projects/demo_1.png', validators=[validate_image])
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=120)
     summary = models.TextField(blank=True)
     content = RichTextUploadingField() # CKEditor Rich Text Field
-
-
+    StartTime = models.DateField(null = False, default=date.today)
+    FinishedTime = models.DateField(null = False, default=date.today)
+    customer = models.CharField(max_length=120 , default='unknown')
 
     publish_status = models.BooleanField(default=False, )
     published_date = models.DateTimeField(null=True)
@@ -31,5 +34,5 @@ class Project(models.Model):
         return "{} - {}".format(self.title, self.id)
     
     def get_absolute_url(self):
-        return reverse('blog:single', kwargs={'pid':self.id})
+        return reverse('projects:single', kwargs={'pid':self.id})
     

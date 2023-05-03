@@ -24,10 +24,12 @@ from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from website.views import *
 from blog.sitemaps import *
+from projects.sitemaps import *
 
 sitemaps = {
     'static': StaticViewSitemap,
     'blog' : BlogSitemap,
+    'projects' : ProjectSitemap,
 }
 
 
