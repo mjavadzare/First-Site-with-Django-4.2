@@ -13,10 +13,10 @@ class Project(models.Model):
         megabyte_limit = 2.0
         if filesize > megabyte_limit*1024*1024:
             raise ValidationError("Max image size is %sMB" % str(megabyte_limit))
-    image = models.ImageField(upload_to='projects/', default='projects/demo_1.png', validators=[validate_image])
+    image = models.ImageField(upload_to='projects/', default='projects/default.png', validators=[validate_image])
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    title = models.CharField(max_length=120)
-    summary = models.TextField(blank=True)
+    type = models.CharField( max_length=120 , default='website', null=False)
+    title = models.CharField(max_length=250, default='website', null=False )
     content = RichTextUploadingField() # CKEditor Rich Text Field
     StartTime = models.DateField(null = False, default=date.today)
     FinishedTime = models.DateField(null = False, default=date.today)

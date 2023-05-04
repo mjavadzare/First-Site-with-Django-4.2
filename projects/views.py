@@ -29,6 +29,7 @@ def projects_view(request, *args, **kwargs):
 
 
 def projects_single_view(request, pid):
-    projects = get_object_or_404(Project, pk=pid , published_date__lte=timezone.now())
-    context = {'projects': projects}
+    project = get_object_or_404(Project, pk=pid , published_date__lte=timezone.now())
+    related_projects = Project.objects.filter(type=project.type)
+    context = {'project': project , 'related_projects':related_projects , }
     return render(request, 'project/project_details.html', context)
