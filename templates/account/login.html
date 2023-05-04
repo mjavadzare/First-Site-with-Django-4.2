@@ -34,7 +34,7 @@
                             {%else%}
                             {% endif %}
                         -->
-                        <form action="{% url 'account_login' %}" method="post" class="signin-form">
+                        <form action="{% url 'account:login' %}" method="post" class="signin-form">
 
                             {% csrf_token %}
 

@@ -64,7 +64,7 @@
                             </ul>
                         </div>
                     </article>
-
+                    {% endfor %}
                     {% if posts.has_other_pages %}
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
@@ -136,7 +136,7 @@
         </div>
     </div>
 </section>
-{% endfor %}
+
 
 {% block footer %}
 {% endblock %}
