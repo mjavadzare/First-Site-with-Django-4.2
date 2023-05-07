@@ -50,8 +50,7 @@
                                     {% thumbnail project.image "844x505" crop="center" as im %}
                                     <img class="img-fluid" src="{{im.url}}" width="{{ im.width }}"
                                         height="{{ im.height }}" alt="single_project"> </a>
-                                        {% empty %}
-                                        <p></p>
+                                        
                                 {% endthumbnail %}
                             </div>
                         </div>
