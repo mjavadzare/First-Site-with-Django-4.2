@@ -108,19 +108,19 @@
             <h4>Newsletter</h4>
             <p>Stay updated with our latest trends Seed heaven so said place winged over given forth fruit.
             </p>
-            <form action="#">
+            <form action="{% url 'website:newsletter' %}" method="post">
               <div class="form-group">
                 <div class="input-group mb-3">
                   {% csrf_token %}
-                  <input name="email" placeholder="Enter email"
-                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Enter email'" class="common-input mb-20 form-control" required=""
-                    type="email">
+                  <input name="email" placeholder="Enter email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'"
+                class="common-input mb-20 form-control" required="" type="email">
                   <button class="btn" type="submit"><i class="ti-angle-right"></i></button>
                 </div>
               </div>
           </div>
           </form>
+          {% include 'messages.html' %}
           <div class="social_icon">
             <a href="#"> <i class="ti-facebook"></i> </a>
             <a href="#"> <i class="ti-twitter-alt"></i> </a>

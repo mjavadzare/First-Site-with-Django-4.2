@@ -5,6 +5,7 @@
 
 <div class="col-sm-6 col-lg-4 col-xl-4">
     <div class="single-home-blog">
+      <a href="{% url 'blog:single' pid=post.id %}">
       <div class="card">
         {% thumbnail post.image "360x260" crop="center" as im %}
         <img class="img-fluid" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
@@ -14,7 +15,7 @@
                 {% endthumbnail %}
         <div class="card-body">
           <a href="{% url 'blog:single' pid=post.id %}">Technology</a> | <span> {{post.published_date|timesince|upto:', '}} ago</span>
-          <div class="tags">
+          <div class="tags"></a>
             <!-- <ul>
                 {% for cat , count in categories %}
                 <li>
@@ -23,7 +24,7 @@
                 {% endfor %}
             </ul> -->
         </div>
-            <h5 class="card-title">{{post.title}}</h5>
+        <a href="{% url 'blog:single' pid=post.id %}"><h5 class="card-title">{{post.title}}</h5>
           </a>
           <ul>
             <li> <i class="ti-comments"></i>{% total_comments pid=post.id %} Comments</li>
@@ -31,6 +32,7 @@
           </ul>
         </div>
       </div>
+    </a>
     </div>
   </div>
   {% endfor %}

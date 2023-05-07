@@ -1,0 +1,46 @@
+{% load static %}
+{% load blog_tags %}
+{% load thumbnail %}
+{% load humanize %}
+
+
+<section class="our_latest_work section_padding">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="section_tittle text-center">
+            <p>recent work</p>
+            <h2>Creative work for client</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+            {% for work in latest_works %}
+          <div class="single_work">
+            <div class="row align-items-center">
+              <div class="offset-lg-1 col-lg-4 col-md-6">
+                <div class="single_work_demo">
+                  <h5>{{work.type}}</h5>
+                  <h3>{{work.title}}</h3>
+                  <p>{{work.content|truncatewords:30}}</p>
+                  <a href="{% url 'projects:single' pid=work.id %}" class="btn_3">learn more <span class="flaticon-slim-right"></span> </a>
+                </div>
+              </div>
+              <!-- 844x505 -->
+              <div class="offset-lg-2 col-lg-6 col-md-6">
+                <div class="demo_img">
+                    <a href="{% url 'projects:single' pid=work.id %}">
+                    {% thumbnail work.image "844x505" crop="center" as im %}
+                        <img class="img-fluid" src="{{im.url}}" width="{{ im.width }}"
+                            height="{{ im.height }}" alt="single_project"> </a>
+                    {% endthumbnail %}
+                </div>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
