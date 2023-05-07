@@ -67,14 +67,29 @@ INSTALLED_APPS = [
     
 ]
 
+import os
+#email
+
+from decouple import config
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.themikey.ir'  #Hosted on namecheap Ex: mail.pure.com
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_PORT = 587 #This will be different based on your Host, for Namecheap I use this`
+EMAIL_HOST_USER = config("EMAIL_HOST_USER") # Ex: info@pure.com
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD") # for the email you created through cPanel. The password for that
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
 #allauth configuration
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'  # redirect (important)
 
 # captcha admin settings
-# MULTI_CAPTCHA_ADMIN = {
-#     'engine': 'simple-captcha',
-# }
+MULTI_CAPTCHA_ADMIN = {
+     'engine': 'simple-captcha',
+ }
 
 # robots
 ROBOTS_USE_HOST = False

@@ -46,10 +46,12 @@
                         </div>
                         <div class="offset-lg-1 col-lg-6 col-md-6">
                             <div class="demo_img">
-                                <a href="{% url 'projects:single' pid=project.id %}">{% thumbnail project.image
-                                    "844x505" crop="center" as im %}
+                                <a href="{% url 'projects:single' pid=project.id %}">
+                                    {% thumbnail project.image "844x505" crop="center" as im %}
                                     <img class="img-fluid" src="{{im.url}}" width="{{ im.width }}"
                                         height="{{ im.height }}" alt="single_project"> </a>
+                                        {% empty %}
+                                        <p></p>
                                 {% endthumbnail %}
                             </div>
                         </div>
