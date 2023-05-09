@@ -52,9 +52,12 @@
       <div class="col-12">
         <h2 class="contact-title">Get in Touch</h2>
       </div>
+      
       <div class="col-lg-8">
-        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+        
+        <form class="form-contact contact_form" action="{% url 'website:contact' %}" method="post"
           novalidate="novalidate">
+          {% csrf_token %}
           <div class="row">
             <div class="col-12">
               <div class="form-group">
@@ -82,9 +85,35 @@
               </div>
             </div>
           </div>
+          {{form.captcha}}
           <div class="form-group mt-3">
             <button type="submit" class="button button-contactForm btn_4">Send Message</button>
+            
           </div>
+          {% if messages %}
+						{% for message in messages %}
+						<div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}
+						</div>
+						{% endfor %}
+						{% endif %}
+
+						{% if form.errors %}
+						<div class="alert alert-error">
+							<h4>Please fix the following errors</h4>
+							<ul>
+								{% for field in form %}
+								{% if field.errors %}
+								{% for error in field.errors %}
+								<li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+								{% endfor %}
+								{% endif %}
+								{% endfor %}
+							</ul>
+							{% if form.non_field_errors %}
+							{{ form.non_field_errors }}
+							{% endif %}
+						</div>
+						{% endif %}
         </form>
       </div>
       <div class="col-lg-4">

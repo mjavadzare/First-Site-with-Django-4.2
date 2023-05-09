@@ -80,7 +80,7 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER") # Ex: info@pure.com
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD") # for the email you created through cPanel. The password for that
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-
+CSRF_COOKIE_DOMAIN = None
 
 #allauth configuration
 LOGIN_URL = '/login'

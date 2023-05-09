@@ -46,7 +46,15 @@ urlpatterns = [
     re_path(r'^robots\.txt', include('robots.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')), # The CKEditor path
     path('captcha/', include('captcha.urls')),
+    # patterns('',
+    # url(r'^$', include('app.homepage.urls')),
 ]
+
+from django.conf.urls.static import static
+from django.conf.urls import handler404
+from django.conf.urls import patterns, include, url
+from website import views
+handler404 = views.handler404
 
 # admin interface Header
 admin.site.site_header = 'Mikey'
