@@ -160,6 +160,10 @@ django.conf.settings.COMPRESS_CACHE_KEY_FUNCTION = 	'compressor.cache.simple_cac
 django.conf.settings.COMPRESS_OFFLINE = False
 django.conf.settings.COMPRESS_OFFLINE_TIMEOUT = 31536000
 
+# important
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
