@@ -50,12 +50,6 @@ urlpatterns = [
     # url(r'^$', include('app.homepage.urls')),
 ]
 
-from django.conf.urls.static import static
-from django.conf.urls import handler404
-from django.conf.urls import patterns, include, url
-from website import views
-handler404 = views.handler404
-
 # admin interface Header
 admin.site.site_header = 'Mikey'
 admin.site.index_title = 'Admin Panel'
