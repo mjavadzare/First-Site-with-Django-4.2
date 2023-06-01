@@ -7,7 +7,8 @@ from BrandNewSite.settings import *
 # SECURITY WARNING: keep the secret key used in production secret!
 from decouple import config
 
-SECRET_KEY = config("SECRET_KEY")
+#SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = 'django-insecure-y@-4ep(=of473n=0f$10p6t1oa3g5fprcbr@keqizqpeky3ag%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
