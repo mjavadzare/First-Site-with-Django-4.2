@@ -24,6 +24,7 @@ def latest_posts(arg=5):
     return {'pop_posts': posts}
 
 
+
 @register.inclusion_tag('blog/widgets/post_category_widget.html', name='category')
 def category_list():
     posts = Post.objects.filter(publish_status= True)
