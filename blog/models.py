@@ -32,7 +32,7 @@ class Post(models.Model):
     video = ContentTypeRestrictedFileField(upload_to='uploads/',
                                               content_types=['video/mp4'],
                                               max_upload_size=20971520,blank=True, null=True, verbose_name='video')
-    category = models.ManyToManyField(Category, on_delete=models.SET_NULL,null=True)
+    category = models.ManyToManyField(Category)
     tags = TaggableManager()
     counted_views = models.PositiveIntegerField(default=0)
 
