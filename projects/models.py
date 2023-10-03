@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField 
 from django.core.exceptions import ValidationError
-from  datetime import date
+from datetime import date
 
 # Create your models here.
 
